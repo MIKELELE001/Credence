@@ -1,41 +1,12 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
-
-interface ChallengeRequestBody {
-  agentName: string;
-  agentSpecialty: string;
-  agentCredenceScore: number;
-  agentSuccessRate: number;
-  scenarioTitle: string;
-  scenarioDescription: string;
-  scenarioDifficulty: string;
-}
-
-interface AnthropicResponse {
-  content: { type: string; text: string }[];
-}
-
-interface ChallengeResult {
-  passed: boolean;
-  score: number;
-  analysis: string;
-  recommendations: string[];
-}
-
-const isValidBody = (body: unknown): body is ChallengeRequestBody => {
-  if (typeof body !== 'object' || body === null) return false;
-  const b = body as Record<string, unknown>;
-  return (
-    typeof b.agentName === 'string' &&
-    typeof b.agentSpecialty === 'string' &&
-    typeof b.agentCredenceScore === 'number' &&
-    typeof b.agentSuccessRate === 'number' &&
-    typeof b.scenarioTitle === 'string' &&
-    typeof b.scenarioDescription === 'string' &&
-    typeof b.scenarioDifficulty === 'string'
-  );
+export const config = {
+  api: {
+    bodyParser: true,
+  },
 };
+
+const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
 export default async function handler(
   req: VercelRequest,
@@ -46,14 +17,9 @@ export default async function handler(
     return;
   }
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
-    res.status(500).json({ error: 'Server misconfiguration' });
-    return;
-  }
-
-  if (!isValidBody(req.body)) {
-    res.status(400).json({ error: 'Invalid request body' });
+    res.status(500).json({ error: 'Missing API key' });
     return;
   }
 
@@ -69,57 +35,54 @@ export default async function handler(
 
   const prompt = `You are evaluating an AI DeFi agent on the Mantle blockchain.
 
-Agent Details:
-- Name: ${agentName}
-- Specialty: ${agentSpecialty}
-- Credence Score: ${agentCredenceScore}/100
-- Success Rate: ${agentSuccessRate}%
+Agent: ${agentName}, Specialty: ${agentSpecialty}, Score: ${agentCredenceScore}/100, Success Rate: ${agentSuccessRate}%
+Scenario: ${scenarioTitle} (${scenarioDifficulty}) - ${scenarioDescription}
 
-Challenge Scenario:
-- Title: ${scenarioTitle}
-- Difficulty: ${scenarioDifficulty}
-- Description: ${scenarioDescription}
-
-Based on this agent's profile and the scenario, simulate how it would perform.
-Respond ONLY with a valid JSON object in this exact format, no extra text:
+Respond ONLY with this JSON, no extra text, no markdown:
 {
-  "passed": true or false,
-  "score": number between 0 and 100,
-  "analysis": "2-3 sentence analysis of how the agent handled the scenario",
+  "passed": true,
+  "score": 85,
+  "analysis": "Brief 2 sentence analysis here.",
   "recommendations": ["recommendation 1", "recommendation 2", "recommendation 3"]
 }`;
 
   try {
-    const response = await fetch(ANTHROPIC_API_URL, {
+    const response = await fetch(GROQ_API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01'
+        'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 1000,
-        messages: [{ role: 'user', content: prompt }]
+        model: 'llama-3.3-70b-versatile',
+        max_tokens: 500,
+        messages: [
+          {
+            role: 'system',
+            content: 'You are a DeFi agent evaluator. Always respond with valid JSON only, no markdown, no extra text.'
+          },
+          {
+            role: 'user',
+            content: prompt
+          }
+        ]
       })
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
-      res.status(502).json({ error: 'AI service error' });
+      res.status(502).json({ error: 'AI error', detail: data });
       return;
     }
 
-    const data = await response.json() as AnthropicResponse;
-    const text = data.content
-      .filter(block => block.type === 'text')
-      .map(block => block.text)
-      .join('');
-
+    const text = data.choices[0].message.content.trim();
     const clean = text.replace(/```json|```/g, '').trim();
-    const result = JSON.parse(clean) as ChallengeResult;
+    const result = JSON.parse(clean);
 
     res.status(200).json(result);
-  } catch {
-    res.status(500).json({ error: 'Failed to process challenge' });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Unknown error';
+    res.status(500).json({ error: message });
   }
 }
