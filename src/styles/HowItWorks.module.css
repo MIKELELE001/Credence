@@ -1,0 +1,84 @@
+.section {
+      padding: 5rem 1.5rem;
+      }
+
+      .inner {
+        max-width: 1200px;
+          margin: 0 auto;
+            display: flex;
+              flex-direction: column;
+                align-items: center;
+                  gap: 1rem;
+                    text-align: center;
+                    }
+
+                    .heading {
+                      font-size: clamp(1.6rem, 3vw, 2.2rem);
+                        font-weight: 800;
+                          color: var(--color-white);
+                            letter-spacing: -0.02em;
+                            }
+
+                            .subtext {
+                              font-size: 1rem;
+                                color: var(--color-white-secondary);
+                                  max-width: 520px;
+                                    line-height: 1.6;
+                                      margin-bottom: 1rem;
+                                      }
+
+                                      .grid {
+                                        display: grid;
+                                          grid-template-columns: 1fr;
+                                            gap: 1.25rem;
+                                              width: 100%;
+                                                margin-top: 1rem;
+                                                }
+
+                                                @media (min-width: 640px) {
+                                                  .grid {
+                                                      grid-template-columns: repeat(2, 1fr);
+                                                        }
+                                                        }
+
+                                                        @media (min-width: 1024px) {
+                                                          .grid {
+                                                              grid-template-columns: repeat(4, 1fr);
+                                                                }
+                                                                }
+
+                                                                .card {
+                                                                  background-color: var(--color-bg-card);
+                                                                    border: 1px solid var(--color-border);
+                                                                      border-radius: var(--radius-lg);
+                                                                        padding: 1.75rem;
+                                                                          text-align: left;
+                                                                            display: flex;
+                                                                              flex-direction: column;
+                                                                                gap: 0.75rem;
+                                                                                  transition: border-color 0.2s ease;
+                                                                                  }
+
+                                                                                  .card:hover {
+                                                                                    border-color: var(--color-green-border);
+                                                                                    }
+
+                                                                                    .number {
+                                                                                      font-size: 0.8rem;
+                                                                                        font-weight: 700;
+                                                                                          color: var(--color-green-primary);
+                                                                                            letter-spacing: 0.08em;
+                                                                                              font-family: var(--font-mono);
+                                                                                              }
+
+                                                                                              .title {
+                                                                                                font-size: 1rem;
+                                                                                                  font-weight: 700;
+                                                                                                    color: var(--color-white);
+                                                                                                    }
+
+                                                                                                    .description {
+                                                                                                      font-size: 0.875rem;
+                                                                                                        color: var(--color-white-secondary);
+                                                                                                          line-height: 1.6;
+                                                                                                          }

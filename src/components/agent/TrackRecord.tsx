@@ -1,0 +1,58 @@
+import React from 'react';
+import styles from '../../styles/TrackRecord.module.css';
+import type { AgentPerformanceRecord } from '../../types';
+
+interface TrackRecordProps {
+  records: AgentPerformanceRecord[];
+  }
+
+  const TrackRecord: React.FC<TrackRecordProps> = ({ records }) => {
+    if (records.length === 0) {
+        return (
+              <div className={styles.empty}>No performance records yet.</div>
+                  );
+                    }
+
+                      return (
+                          <div className={styles.wrapper}>
+                                <h3 className={styles.heading}>Performance History</h3>
+                                      <div className={styles.table}>
+                                              <div className={styles.row + ' ' + styles.headerRow}>
+                                                        <span>Date</span>
+                                                                  <span>Task</span>
+                                                                            <span>Result</span>
+                                                                                      <span>Return</span>
+                                                                                                <span>Verified</span>
+                                                                                                        </div>
+                                                                                                                {records.map((record, index) => (
+                                                                                                                          <div key={index} className={styles.row}>
+                                                                                                                                      <span className={styles.date}>{record.date}</span>
+                                                                                                                                                  <span className={styles.task}>{record.task}</span>
+                                                                                                                                                              <span
+                                                                                                                                                                            className={
+                                                                                                                                                                                            record.result === 'Success'
+                                                                                                                                                                                                              ? styles.success
+                                                                                                                                                                                                                                : styles.failed
+                                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                                                          >
+                                                                                                                                                                                                                                                                        {record.result}
+                                                                                                                                                                                                                                                                                    </span>
+                                                                                                                                                                                                                                                                                                <span
+                                                                                                                                                                                                                                                                                                              className={
+                                                                                                                                                                                                                                                                                                                              record.returnPct >= 0 ? styles.positive : styles.negative
+                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                        >
+                                                                                                                                                                                                                                                                                                                                                                      {record.returnPct >= 0 ? '+' : ''}
+                                                                                                                                                                                                                                                                                                                                                                                    {record.returnPct}%
+                                                                                                                                                                                                                                                                                                                                                                                                </span>
+                                                                                                                                                                                                                                                                                                                                                                                                            <span className={styles.verified}>
+                                                                                                                                                                                                                                                                                                                                                                                                                          {record.verified ? '✓' : '✗'}
+                                                                                                                                                                                                                                                                                                                                                                                                                                      </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        ))}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    );
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    };
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    export default React.memo(TrackRecord);

@@ -1,0 +1,79 @@
+export type AgentSpecialty =
+  | 'Yield Optimization'
+    | 'Trading'
+      | 'Risk Management'
+        | 'Liquidity Provisioning'
+          | 'RWA Management'
+            | 'Portfolio Rebalancing';
+
+            export type AgentStatus = 'active' | 'inactive' | 'challenged';
+
+            export interface AgentPerformanceRecord {
+              date: string;
+                task: string;
+                  result: string;
+                    returnPct: number;
+                      verified: boolean;
+                      }
+
+                      export interface Agent {
+                        id: string;
+                          name: string;
+                            specialty: AgentSpecialty;
+                              status: AgentStatus;
+                                credenceScore: number;
+                                  stakedMNT: number;
+                                    totalTasks: number;
+                                      successRate: number;
+                                        avgReturn: number;
+                                          description: string;
+                                            erc8004Id: string;
+                                              createdAt: string;
+                                                performanceHistory: AgentPerformanceRecord[];
+                                                }
+
+                                                export interface ChallengeScenario {
+                                                  id: string;
+                                                    title: string;
+                                                      description: string;
+                                                        difficulty: 'Easy' | 'Medium' | 'Hard';
+                                                          category: AgentSpecialty;
+                                                          }
+
+                                                          export interface ChallengeResult {
+                                                            agentId: string;
+                                                              scenarioId: string;
+                                                                passed: boolean;
+                                                                  score: number;
+                                                                    analysis: string;
+                                                                      recommendations: string[];
+                                                                        timestamp: string;
+                                                                        }
+
+                                                                        export interface FilterState {
+                                                                          specialty: AgentSpecialty | 'All';
+                                                                            minScore: number;
+                                                                              status: AgentStatus | 'All';
+                                                                                sortBy: 'credenceScore' | 'successRate' | 'avgReturn' | 'stakedMNT';
+                                                                                }
+
+                                                                                export interface WalletState {
+                                                                                  address: string | null;
+                                                                                    isConnected: boolean;
+                                                                                      isConnecting: boolean;
+                                                                                        error: string | null;
+                                                                                        }
+
+                                                                                        export interface StakeFormData {
+                                                                                          agentName: string;
+                                                                                            specialty: AgentSpecialty;
+                                                                                              description: string;
+                                                                                                stakeAmount: number;
+                                                                                                }
+
+                                                                                                export interface SiteStats {
+                                                                                                  totalAgents: number;
+                                                                                                    totalStaked: string;
+                                                                                                      challengesRun: number;
+                                                                                                        successfulHires: number;
+                                                                                                        }

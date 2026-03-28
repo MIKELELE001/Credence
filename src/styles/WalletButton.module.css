@@ -1,0 +1,52 @@
+.button {
+      padding: 0.6rem 1.25rem;
+        background-color: transparent;
+          color: var(--color-green-primary);
+            border: 1px solid var(--color-green-border);
+              border-radius: var(--radius-md);
+                font-size: 0.875rem;
+                  font-weight: 600;
+                    cursor: pointer;
+                      transition: all 0.2s ease;
+                        white-space: nowrap;
+                        }
+
+                        .button:hover:not(:disabled) {
+                          background-color: var(--color-green-dim);
+                            box-shadow: var(--shadow-green);
+                            }
+
+                            .button:disabled {
+                              opacity: 0.5;
+                                cursor: not-allowed;
+                                }
+
+                                .connected {
+                                  display: flex;
+                                    align-items: center;
+                                      gap: 0.5rem;
+                                        padding: 0.6rem 1.25rem;
+                                          background-color: var(--color-green-dim);
+                                            color: var(--color-green-primary);
+                                              border: 1px solid var(--color-green-border);
+                                                border-radius: var(--radius-md);
+                                                  font-size: 0.875rem;
+                                                    font-weight: 600;
+                                                      cursor: pointer;
+                                                        transition: all 0.2s ease;
+                                                          font-family: var(--font-mono);
+                                                          }
+
+                                                          .connected:hover {
+                                                            background-color: rgba(239, 68, 68, 0.1);
+                                                              color: #ef4444;
+                                                                border-color: rgba(239, 68, 68, 0.3);
+                                                                }
+
+                                                                .dot {
+                                                                  width: 8px;
+                                                                    height: 8px;
+                                                                      border-radius: 50%;
+                                                                        background-color: var(--color-green-primary);
+                                                                          flex-shrink: 0;
+                                                                          }

@@ -1,0 +1,145 @@
+.wrapper {
+      max-width: 900px;
+        margin: 0 auto;
+          padding: 2rem 1.5rem;
+            display: flex;
+              flex-direction: column;
+                gap: 2rem;
+                }
+
+                .back {
+                  background: none;
+                    border: none;
+                      color: var(--color-white-secondary);
+                        font-size: 0.875rem;
+                          cursor: pointer;
+                            padding: 0;
+                              text-align: left;
+                                transition: color 0.2s ease;
+                                  width: fit-content;
+                                  }
+
+                                  .back:hover {
+                                    color: var(--color-green-primary);
+                                    }
+
+                                    .header {
+                                      display: flex;
+                                        align-items: flex-start;
+                                          justify-content: space-between;
+                                            gap: 2rem;
+                                              flex-wrap: wrap;
+                                              }
+
+                                              .identity {
+                                                display: flex;
+                                                  flex-direction: column;
+                                                    gap: 0.75rem;
+                                                    }
+
+                                                    .name {
+                                                      font-size: clamp(1.6rem, 3vw, 2rem);
+                                                        font-weight: 800;
+                                                          color: var(--color-white);
+                                                            letter-spacing: -0.02em;
+                                                            }
+
+                                                            .badges {
+                                                              display: flex;
+                                                                gap: 0.5rem;
+                                                                  flex-wrap: wrap;
+                                                                  }
+
+                                                                  .erc {
+                                                                    font-size: 0.78rem;
+                                                                      color: var(--color-white-secondary);
+                                                                        font-family: var(--font-mono);
+                                                                        }
+
+                                                                        .erc span {
+                                                                          color: var(--color-green-primary);
+                                                                          }
+
+                                                                          .description {
+                                                                            font-size: 0.95rem;
+                                                                              color: var(--color-white-secondary);
+                                                                                line-height: 1.7;
+                                                                                  padding: 1.5rem;
+                                                                                    background-color: var(--color-bg-card);
+                                                                                      border: 1px solid var(--color-border);
+                                                                                        border-radius: var(--radius-lg);
+                                                                                        }
+
+                                                                                        .stats {
+                                                                                          display: grid;
+                                                                                            grid-template-columns: repeat(2, 1fr);
+                                                                                              gap: 1rem;
+                                                                                              }
+
+                                                                                              @media (min-width: 640px) {
+                                                                                                .stats {
+                                                                                                    grid-template-columns: repeat(4, 1fr);
+                                                                                                      }
+                                                                                                      }
+
+                                                                                                      .stat {
+                                                                                                        display: flex;
+                                                                                                          flex-direction: column;
+                                                                                                            align-items: center;
+                                                                                                              gap: 0.3rem;
+                                                                                                                padding: 1.25rem;
+                                                                                                                  background-color: var(--color-bg-card);
+                                                                                                                    border: 1px solid var(--color-border);
+                                                                                                                      border-radius: var(--radius-lg);
+                                                                                                                        text-align: center;
+                                                                                                                        }
+
+                                                                                                                        .statValue {
+                                                                                                                          font-size: 1.2rem;
+                                                                                                                            font-weight: 800;
+                                                                                                                              color: var(--color-green-primary);
+                                                                                                                              }
+
+                                                                                                                              .statLabel {
+                                                                                                                                font-size: 0.78rem;
+                                                                                                                                  color: var(--color-white-secondary);
+                                                                                                                                    font-weight: 500;
+                                                                                                                                    }
+
+                                                                                                                                    .actions {
+                                                                                                                                      display: flex;
+                                                                                                                                        gap: 1rem;
+                                                                                                                                          flex-wrap: wrap;
+                                                                                                                                          }
+
+                                                                                                                                          .challenge {
+                                                                                                                                            padding: 0.75rem 1.75rem;
+                                                                                                                                              background-color: transparent;
+                                                                                                                                                color: var(--color-green-primary);
+                                                                                                                                                  border: 1px solid var(--color-green-border);
+                                                                                                                                                    border-radius: var(--radius-md);
+                                                                                                                                                      font-size: 0.95rem;
+                                                                                                                                                        font-weight: 600;
+                                                                                                                                                          cursor: pointer;
+                                                                                                                                                            transition: all 0.2s ease;
+                                                                                                                                                            }
+
+                                                                                                                                                            .challenge:hover {
+                                                                                                                                                              background-color: var(--color-green-dim);
+                                                                                                                                                              }
+
+                                                                                                                                                              .hire {
+                                                                                                                                                                padding: 0.75rem 1.75rem;
+                                                                                                                                                                  background-color: var(--color-green-primary);
+                                                                                                                                                                    color: #000000;
+                                                                                                                                                                      border: none;
+                                                                                                                                                                        border-radius: var(--radius-md);
+                                                                                                                                                                          font-size: 0.95rem;
+                                                                                                                                                                            font-weight: 700;
+                                                                                                                                                                              cursor: pointer;
+                                                                                                                                                                                transition: background-color 0.2s ease;
+                                                                                                                                                                                }
+
+                                                                                                                                                                                .hire:hover {
+                                                                                                                                                                                  background-color: var(--color-green-hover);
+                                                                                                                                                                                  }

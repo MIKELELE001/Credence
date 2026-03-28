@@ -1,0 +1,188 @@
+.wrapper {
+      display: flex;
+        flex-direction: column;
+          gap: 1.5rem;
+          }
+
+          .header {
+            display: flex;
+              flex-direction: column;
+                gap: 0.5rem;
+                }
+
+                .heading {
+                  font-size: 1.4rem;
+                    font-weight: 800;
+                      color: var(--color-white);
+                      }
+
+                      .subtext {
+                        font-size: 0.9rem;
+                          color: var(--color-white-secondary);
+                            line-height: 1.6;
+                            }
+
+                            .subtext strong {
+                              color: var(--color-green-primary);
+                              }
+
+                              .scenarios {
+                                display: grid;
+                                  grid-template-columns: 1fr;
+                                    gap: 1rem;
+                                    }
+
+                                    @media (min-width: 640px) {
+                                      .scenarios {
+                                          grid-template-columns: repeat(2, 1fr);
+                                            }
+                                            }
+
+                                            @media (min-width: 1024px) {
+                                              .scenarios {
+                                                  grid-template-columns: repeat(3, 1fr);
+                                                    }
+                                                    }
+
+                                                    .run {
+                                                      padding: 0.85rem 2rem;
+                                                        background-color: var(--color-green-primary);
+                                                          color: #000000;
+                                                            font-weight: 700;
+                                                              font-size: 1rem;
+                                                                border-radius: var(--radius-md);
+                                                                  border: none;
+                                                                    cursor: pointer;
+                                                                      transition: all 0.2s ease;
+                                                                        width: fit-content;
+                                                                        }
+
+                                                                        .run:hover:not(:disabled) {
+                                                                          background-color: var(--color-green-hover);
+                                                                            box-shadow: var(--shadow-green);
+                                                                            }
+
+                                                                            .run:disabled {
+                                                                              opacity: 0.4;
+                                                                                cursor: not-allowed;
+                                                                                }
+
+                                                                                .error {
+                                                                                  font-size: 0.875rem;
+                                                                                    color: #ef4444;
+                                                                                      padding: 0.75rem 1rem;
+                                                                                        background-color: rgba(239, 68, 68, 0.1);
+                                                                                          border: 1px solid rgba(239, 68, 68, 0.3);
+                                                                                            border-radius: var(--radius-md);
+                                                                                            }
+
+                                                                                            .result {
+                                                                                              display: flex;
+                                                                                                flex-direction: column;
+                                                                                                  gap: 1.5rem;
+                                                                                                    padding: 2rem;
+                                                                                                      background-color: var(--color-bg-card);
+                                                                                                        border: 1px solid var(--color-border);
+                                                                                                          border-radius: var(--radius-lg);
+                                                                                                          }
+
+                                                                                                          .verdict {
+                                                                                                            font-size: 1.1rem;
+                                                                                                              font-weight: 800;
+                                                                                                                padding: 0.75rem 1.25rem;
+                                                                                                                  border-radius: var(--radius-md);
+                                                                                                                    text-align: center;
+                                                                                                                    }
+
+                                                                                                                    .passed {
+                                                                                                                      background-color: var(--color-green-dim);
+                                                                                                                        color: var(--color-green-primary);
+                                                                                                                          border: 1px solid var(--color-green-border);
+                                                                                                                          }
+
+                                                                                                                          .failed {
+                                                                                                                            background-color: rgba(239, 68, 68, 0.1);
+                                                                                                                              color: #ef4444;
+                                                                                                                                border: 1px solid rgba(239, 68, 68, 0.3);
+                                                                                                                                }
+
+                                                                                                                                .score {
+                                                                                                                                  display: flex;
+                                                                                                                                    flex-direction: column;
+                                                                                                                                      align-items: center;
+                                                                                                                                        gap: 0.25rem;
+                                                                                                                                        }
+
+                                                                                                                                        .scoreValue {
+                                                                                                                                          font-size: 2.5rem;
+                                                                                                                                            font-weight: 800;
+                                                                                                                                              color: var(--color-green-primary);
+                                                                                                                                              }
+
+                                                                                                                                              .scoreLabel {
+                                                                                                                                                font-size: 0.8rem;
+                                                                                                                                                  color: var(--color-white-secondary);
+                                                                                                                                                    font-weight: 600;
+                                                                                                                                                      letter-spacing: 0.05em;
+                                                                                                                                                        text-transform: uppercase;
+                                                                                                                                                        }
+
+                                                                                                                                                        .analysis {
+                                                                                                                                                          display: flex;
+                                                                                                                                                            flex-direction: column;
+                                                                                                                                                              gap: 0.5rem;
+                                                                                                                                                              }
+
+                                                                                                                                                              .analysis h4 {
+                                                                                                                                                                font-size: 0.9rem;
+                                                                                                                                                                  font-weight: 700;
+                                                                                                                                                                    color: var(--color-white);
+                                                                                                                                                                    }
+
+                                                                                                                                                                    .analysis p {
+                                                                                                                                                                      font-size: 0.875rem;
+                                                                                                                                                                        color: var(--color-white-secondary);
+                                                                                                                                                                          line-height: 1.7;
+                                                                                                                                                                          }
+
+                                                                                                                                                                          .recommendations {
+                                                                                                                                                                            display: flex;
+                                                                                                                                                                              flex-direction: column;
+                                                                                                                                                                                gap: 0.5rem;
+                                                                                                                                                                                }
+
+                                                                                                                                                                                .recommendations h4 {
+                                                                                                                                                                                  font-size: 0.9rem;
+                                                                                                                                                                                    font-weight: 700;
+                                                                                                                                                                                      color: var(--color-white);
+                                                                                                                                                                                      }
+
+                                                                                                                                                                                      .recommendations ul {
+                                                                                                                                                                                        display: flex;
+                                                                                                                                                                                          flex-direction: column;
+                                                                                                                                                                                            gap: 0.5rem;
+                                                                                                                                                                                              padding-left: 1.25rem;
+                                                                                                                                                                                              }
+
+                                                                                                                                                                                              .recommendations li {
+                                                                                                                                                                                                font-size: 0.875rem;
+                                                                                                                                                                                                  color: var(--color-white-secondary);
+                                                                                                                                                                                                    line-height: 1.6;
+                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                    .reset {
+                                                                                                                                                                                                      padding: 0.75rem 1.75rem;
+                                                                                                                                                                                                        background-color: transparent;
+                                                                                                                                                                                                          color: var(--color-green-primary);
+                                                                                                                                                                                                            border: 1px solid var(--color-green-border);
+                                                                                                                                                                                                              border-radius: var(--radius-md);
+                                                                                                                                                                                                                font-size: 0.9rem;
+                                                                                                                                                                                                                  font-weight: 600;
+                                                                                                                                                                                                                    cursor: pointer;
+                                                                                                                                                                                                                      transition: all 0.2s ease;
+                                                                                                                                                                                                                        width: fit-content;
+                                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                                        .reset:hover {
+                                                                                                                                                                                                                          background-color: var(--color-green-dim);
+                                                                                                                                                                                                                          }

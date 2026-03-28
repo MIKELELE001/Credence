@@ -1,0 +1,49 @@
+.wrapper {
+      display: flex;
+        flex-direction: column;
+          align-items: center;
+            justify-content: center;
+              min-height: 100vh;
+                gap: 1rem;
+                  padding: 2rem;
+                    text-align: center;
+                      background-color: var(--color-bg-primary);
+                      }
+
+                      .code {
+                        font-size: 6rem;
+                          font-weight: 800;
+                            color: var(--color-green-primary);
+                              line-height: 1;
+                                opacity: 0.8;
+                                }
+
+                                .title {
+                                  font-size: 1.5rem;
+                                    font-weight: 700;
+                                      color: var(--color-white);
+                                      }
+
+                                      .message {
+                                        font-size: 0.95rem;
+                                          color: var(--color-white-secondary);
+                                            max-width: 340px;
+                                              line-height: 1.6;
+                                              }
+
+                                              .back {
+                                                margin-top: 1rem;
+                                                  padding: 0.75rem 1.75rem;
+                                                    background-color: var(--color-green-primary);
+                                                      color: #000000;
+                                                        font-weight: 600;
+                                                          font-size: 0.95rem;
+                                                            border-radius: var(--radius-md);
+                                                              border: none;
+                                                                cursor: pointer;
+                                                                  transition: background-color 0.2s ease;
+                                                                  }
+
+                                                                  .back:hover {
+                                                                    background-color: var(--color-green-hover);
+                                                                    }

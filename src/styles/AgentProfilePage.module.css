@@ -1,0 +1,10 @@
+.page {
+      min-height: 100vh;
+        padding: 2rem 1.5rem;
+        }
+
+        .arena {
+          max-width: 900px;
+            margin: 0 auto;
+              padding: 0 1.5rem 3rem;
+              }
